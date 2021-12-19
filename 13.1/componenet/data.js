@@ -1,6 +1,5 @@
-import React from 'react';
-import Btn from './btn/btn'
-const info = [
+
+export const data = [
     {
         name: "John",
         birthday: "1-1-1995",
@@ -41,76 +40,5 @@ const info = [
             fish: ["anchovies", "tuna"],
         },
     },
-];
+]
 
-class data extends React.Component {
-    state = {
-        names: [],
-        birthdays: [],
-        datasBefor1990: []
-
-    }
-    allNames = () => {
-
-        this.setState({
-            names:
-                info.map((item) => item.name)
-        })
-    }
-    allbirthday = () => {
-
-        this.setState({
-            birthdays:
-                info.map((item) => item.birthday)
-        })
-    }
-    allDataBefore1990 = () => {
-
-        this.setState({
-            datasBefor1990:
-                info.filter((item) => item.birthday.slice(-4) <= '1990')
-        })
-        console.log(this.state.datasBefor1990)
-    }
-
-    render() {
-        return (
-            <div>
-                <Btn
-                    onClickFunc={this.allNames}
-                    text='allName'
-                />
-                {this.state.names.map((item, i) =>
-                    <p key={i}>
-                        {item}
-                    </p>
-                )}
-                <Btn
-                    onClickFunc={this.allbirthday}
-                    text='allbirthday'
-                />
-                {this.state.birthdays.map((item, i) =>
-                    <p key={i}>
-                        {item}
-                    </p>
-                )}
-                <Btn
-                    onClickFunc={this.allDataBefore1990}
-                    text='all data born before 1900'
-                />
-                {this.state.datasBefor1990.map((item, i) =>
-                    <p key={i}>
-                        <p>{item.name}</p>
-                        <p>   {item.birthday}</p>
-                        <p>    {item.favoriteFoods.meats + ' ,  '}</p>
-                        <p>   {item.favoriteFoods.fish + ', '}</p>
-                        <br></br>
-                    </p>
-                    
-                )}
-            </div>
-        );
-    }
-}
-
-export default data;

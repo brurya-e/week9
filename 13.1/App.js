@@ -1,56 +1,75 @@
 import React from 'react';
-import Data from  './componenet/data' // import Btn from './btn/btn'
-// import RadioBtn from './radioBtn/radioBtn'
+import Btn from './componenet/btn/btn'
+import  {data}  from './componenet/data.js'
+
 
 class App extends React.Component {
-    // state = {
-    //     jock: '',
-    //     Allcategory: [],
-    //     category : ''
-    // };
+  
+    
+    state = {
+        names: [],
+        birthdays: [],
+        datasBefor1990: []
 
-    // showAllCategory = async () => {
-    //     const response = await chucknorris.get(`/categories`);
-    //     this.setState({ Allcategory: response.data });
+    }
+    allNames = () => {
 
-    // };
-    // onChangeCategory = (data) =>{
-    //     this.setState({ category: data });
+        this.setState({
+            names:
+                data.map((item) => item.name)
+        })
+    }
+    allbirthday = () => {
 
-    // }
+        this.setState({
+            birthdays:
+                data.map((item) => item.birthday)
+        })
+    }
+    allDataBefore1990 = () => {
 
-    // onClickJock = async () => {
-    //     const response = await chucknorris.get(`/random?category=${this.state.category}`);
-    //     this.setState({ jock: response.data.value });
-    // };
-
+        this.setState({
+            datasBefor1990:
+                data.filter((item) => item.birthday.slice(-4) <= '1990')
+        })
+        console.log(this.state.datasBefor1990)
+    }
 
     render() {
         return (
-            <div >
-                <Data />
-                {/* <Btn
-                    onClickFunc={this.showAllCategory}
-                    text='categories'
-                />
-
-               {this.state.Allcategory.map((item, i) => 
-
-                    <RadioBtn
-                        onChange={this.onChangeCategory}
-                        key={i}
-                        text={item}
-                        checkedFlage ={this.state.category === item}
-                    />
-                )}
-    
+            <div>
                 <Btn
-                    onClickFunc={this.onClickJock}
-                    text='give me a jock'
+                    onClickFunc={this.allNames}
+                    text='allName'
                 />
-                <h1>
-                    the jock is: {this.state.jock}
-                </h1> */}
+                {this.state.names.map((item, i) =>
+                    <p key={i}>
+                        {item}
+                    </p>
+                )}
+                <Btn
+                    onClickFunc={this.allbirthday}
+                    text='allbirthday'
+                />
+                {this.state.birthdays.map((item, i) =>
+                    <p key={i}>
+                        {item}
+                    </p>
+                )}
+                <Btn
+                    onClickFunc={this.allDataBefore1990}
+                    text='all data born before 1900'
+                />
+                {this.state.datasBefor1990.map((item, i) =>
+                    <p key={i}>
+                        <p>{item.name}</p>
+                        <p>   {item.birthday}</p>
+                        <p>    {item.favoriteFoods.meats + ' ,  '}</p>
+                        <p>   {item.favoriteFoods.fish + ', '}</p>
+                        <br></br>
+                    </p>
+                    
+                )}
             </div>
         );
     }
