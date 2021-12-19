@@ -1,7 +1,7 @@
 import "./radioBtn.css"
 import React from "react";
 
-const RadioBtn = ({ text,checkedFlage,onChange, key}) => {
+const RadioBtn = ({ text,checkedFlage,onChange}) => {
     return (
         <div>
             <input

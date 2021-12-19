@@ -7,17 +7,15 @@ class App extends React.Component {
     state = {
         jock: '',
         Allcategory: [],
-        category: ''
+        category : ''
     };
-    componentDidMount = () => {
-        this.showAllCategory();
-    }
+
     showAllCategory = async () => {
         const response = await chucknorris.get(`/categories`);
         this.setState({ Allcategory: response.data });
 
     };
-    onChangeCategory = (data) => {
+    onChangeCategory = (data) =>{
         this.setState({ category: data });
 
     }
@@ -30,24 +28,28 @@ class App extends React.Component {
 
     render() {
         return (
-            <div >
-                {this.state.Allcategory.map((item, i) =>
+            <div className="ui container" style={{ marginTop: '10px' }}>
+                <Btn
+                    onClickFunc={this.showAllCategory}
+                    text='categories'
+                />
+
+               {this.state.Allcategory.map((item, i) => 
 
                     <RadioBtn
                         onChange={this.onChangeCategory}
                         key={i}
                         text={item}
-                        checkedFlage={this.state.category === item}
+                        checkedFlage ={this.state.category === item}
                     />
                 )}
-
+    
                 <Btn
                     onClickFunc={this.onClickJock}
                     text='give me a jock'
                 />
-                <br></br>
                 <h1>
-                    {this.state.jock}
+                    the jock is: {this.state.jock}
                 </h1>
             </div>
         );
