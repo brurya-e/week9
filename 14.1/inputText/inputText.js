@@ -6,7 +6,6 @@ const InputText = ({ name, input, text, callBack, ref}) => {
         <div>
             <label for={name}>{text}</label>
             <input
-            
                 ref={ref}
                 type={"text"}
                 name={name}
