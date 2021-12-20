@@ -1,0 +1,36 @@
+.btn {
+    color: "white";
+    text-shadow : "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000"
+}
+
+.green {
+    background: green;
+}
+
+.red {
+    background: red;
+}
+
+.blue {
+    background: blue;
+}
+
+.orange {
+    background: orange;
+}
+
+.pink {
+    background: pink;
+}
+
+.purple {
+    background: purple;
+}
+
+.yellow {
+    background: yellow;
+}
+
+.brown {
+    background: brown;
+}
