@@ -2,12 +2,12 @@ import "./inputText.css"
 import React from "react";
 
 const InputText = ({ name, input, text, callBack, ref}) => {
-    console.log(ref)
     return (
         <div>
             <label for={name}>{text}</label>
             <input
-                ref={(e)=>ref(e)}
+            
+                ref={ref}
                 type={"text"}
                 name={name}
                 value={input || ""}
